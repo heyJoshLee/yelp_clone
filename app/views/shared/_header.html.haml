@@ -1,0 +1,6 @@
+%nav
+  %h1 Yelp clone
+  %h4 Browse Categories
+  = form_tag "/", method: "GET", class: "span5 form-inline" do
+    %input.form-control{:type => "text", name: "search_term"}
+    %input.btn.btn-default(type="submit")

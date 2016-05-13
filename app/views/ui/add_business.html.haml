@@ -1,0 +1,15 @@
+%h1 Add business
+
+%form#add_business
+  %div.form-group
+    %label{:for => "business_name"} Business Name
+    %input.form-control{:type => "text", :name => "business_name"}
+    %label{:for => "category"} Category
+    %select.form-control
+      %option{:value => "Mexican"} Mexican
+      %option{:value => "Chinese"} Chinese
+      %option{:value => "Japanese"} Japanese
+      %option{:value => "Southern Style"} Southern Style
+    %label{:for => "business_name"} Description
+    %textarea.form-control{:name => "description", :cols => "30", :rows => "10"}
+    %button.btn.btn-primary(type="submit") Add business
