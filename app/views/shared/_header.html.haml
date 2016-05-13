@@ -4,3 +4,5 @@
   = form_tag "/", method: "GET", class: "span5 form-inline" do
     %input.form-control{:type => "text", name: "search_term"}
     %input.btn.btn-default(type="submit")
+  - if logged_in?
+    #{current_user.email}

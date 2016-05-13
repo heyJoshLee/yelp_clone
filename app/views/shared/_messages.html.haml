@@ -1,0 +1,3 @@
+- flash.each do |name, msg|
+  %div(class="alert alert-#{name}")
+    = content_tag :div, msg, :class => "flash_#{name} flash_message" if msg.is_a?(String)

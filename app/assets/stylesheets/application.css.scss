@@ -78,3 +78,35 @@ nav {
     margin: 5px 0;
   }
 }
+
+.sign_in {
+  width: 80%;
+  input[type="submit"] {
+    margin-top: 10px;
+  }
+  input[type="text"],
+  input[type="password"] {
+    padding: 0 10px;
+  }
+  input, label {
+    display: block;
+    order: 1px solid rgba(10, 10, 10, 0.4);
+    border-radius: 8px;
+    width: 100%
+  }
+
+}
+
+.flash_message {
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 10px; 
+}
+
+.flash_success {
+  background-color: rgb(169, 232, 177)
+}
+
+.flash_error {
+  background-color: rgb(247, 165, 165)
+}
