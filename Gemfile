@@ -8,6 +8,8 @@ gem "haml-rails"
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap_form'
+
 gem 'autoprefixer-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -24,6 +26,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+gem "bcrypt-ruby"
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -40,6 +44,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
+  gem 'shoulda-matchers', '2.7.0'
+  gem 'fabrication'
+  gem "faker"
+
 end
 
 group :development do
