@@ -8,7 +8,7 @@
           %fieldset
             = f.label :name, "Business name"
             = f.text_field :name
-            = f.select :category_id, options_for_select([["Mexican", 1],["Chinese",2]])
+            = f.select :category_id, options_for_select(category_dropdown_options)
             = f.text_area :description
           %fieldset.actions.control-group.col-sm-offset-2
             .controls

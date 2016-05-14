@@ -1,5 +1,5 @@
 %nav
-  %h1 Yelp clone
+  %h1= link_to "Yelp Clone", root_path
   %h4 Browse Categories
   = form_tag "/", method: "GET", class: "span5 form-inline" do
     %input.form-control{:type => "text", name: "search_term"}
@@ -7,3 +7,4 @@
   - if logged_in?
     #{current_user.email}
     =link_to "Add new business", new_business_path
+    =link_to "Add new category", new_category_path
