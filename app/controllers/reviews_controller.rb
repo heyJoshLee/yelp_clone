@@ -14,6 +14,11 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def recent
+    @reviews = Review.recent_reviews
+    
+  end
+
   private
 
   def review_params

@@ -65,7 +65,17 @@ describe ReviewsController do
         expect(flash[:danger]).not_to be_blank
       end
     end
-
   end
+
+  describe "GET recent" do
+    it "sets @reviews" do
+      review1 = Fabricate(:review, created_at: 2.days.ago)
+      review2 = Fabricate(:review)
+      get :recent
+      expect(assigns(:reviews)).not_to be_nil
+
+    end
+  end
+
   
 end

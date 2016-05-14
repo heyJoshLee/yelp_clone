@@ -6,4 +6,9 @@ class Review < ActiveRecord::Base
   validates :title, presence: true
 
   validates :rating, presence: true
+
+  def self.recent_reviews(num=10)
+    order("created_at DESC").limit(num)
+  end
+
 end

@@ -1,7 +1,10 @@
 .col-sm-6.col-md-4
   .thumbnail
     .caption
-      %h3= review.title
+      - if show_business_name ||= false
+        = link_to business_path(review.business) do
+          %h2 #{review.business.name} | #{review.rating}
+      %h3 #{review.title} #{show_business_name ? "" : "| " + review.rating.to_s}
       %p= review.body
       %small By: 
       = link_to review.user.email, user_path(review.user)

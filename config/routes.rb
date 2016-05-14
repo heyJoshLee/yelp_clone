@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   post "sign_in", to: "sessions#create"
 
   get "sign_out", to: "sessions#destroy"
+  get "reviews/recent", to: "reviews#recent"
 
   resources :users
   resources :businesses do
-    resources :reviews, only: [:create, :destroy]   
+    resources :reviews, only: [:create, :destroy]
   end
   resources :categories
   
