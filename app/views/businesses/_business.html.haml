@@ -1,0 +1,8 @@
+
+.business_preview
+  = link_to business_path(business) do
+    #{business.name} | 3
+    in
+  %p= business.description
+  %h5 Category: 
+  %a{:href => "#"} Hi

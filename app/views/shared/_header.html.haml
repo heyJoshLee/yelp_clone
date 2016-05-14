@@ -6,3 +6,4 @@
     %input.btn.btn-default(type="submit")
   - if logged_in?
     #{current_user.email}
+    =link_to "Add new business", new_business_path

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'ui(/:action)', controller: 'ui'
-  root "pages#home"
+  
+  root "businesses#index"
 
   get "sign_up", to: "users#new"
   post "sign_up", to: "users#create"
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
 
   get "sign_out", to: "sessions#destroy"
 
-  resource :users
+  resources :users
+  resources :businesses
   
 end
