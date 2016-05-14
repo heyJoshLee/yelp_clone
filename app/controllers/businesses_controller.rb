@@ -20,9 +20,11 @@ class BusinessesController < ApplicationController
     @business = Business.new(business_params)
 
     if @business.save 
-      redirect_to businesses_path(@business)
+      flash[:success] = "Business was created"
+      redirect_to business_path(@business)
     else
-      redirect_to root_path
+      flash[:danger] = "There was an error"
+      render :new
     end
   end
 

@@ -6,8 +6,8 @@
           %header
             %h1 Add Business
           %fieldset
-            = f.label :name, "Business name"
             = f.text_field :name
+            = f.url_field :url
             = f.select :category_id, options_for_select(category_dropdown_options)
             = f.text_area :description
           %fieldset.actions.control-group.col-sm-offset-2

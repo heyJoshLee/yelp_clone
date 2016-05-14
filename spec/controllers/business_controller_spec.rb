@@ -49,9 +49,10 @@ describe BusinessesController do
       end
 
       it "redirects to the created business's page" do
-        business_params = Fabricate.attributes_for(:business)
+        category = Fabricate(:category)
+        business_params = Fabricate.attributes_for(:business, category_id: category.id)
         post :create, business: business_params
-        expect(response).to redirect_to businesses_path(Business.first)
+        expect(response).to redirect_to business_path(Business.first)
       end
     end
   end

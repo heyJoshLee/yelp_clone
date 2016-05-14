@@ -25,6 +25,8 @@
               = link_to "New Category", new_category_path
         %li
           %a{:href => "#"} Recent Reviews
+        %li
+          = link_to "New Business", new_business_path
       %ul.nav.navbar-nav.navbar-right
         - if logged_in?
           %li

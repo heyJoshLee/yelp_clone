@@ -1,8 +1,10 @@
+.col-sm-6.col-md-4
+  .thumbnail
+    = link_to image_tag(business.url), business_path(business)
+    = link_to business_path(business) do
+      %h3= business.name
+      %p= business.description
 
-.business_preview
-  = link_to business_path(business) do
-    #{business.name} | 3
-    in
-  %p= business.description
-  %h5 Category: 
-  %a{:href => "#"} Hi
+    = link_to category_path(business.category) do
+      %button.btn.btn-primary{:type => "button"}
+        = business.category.name
