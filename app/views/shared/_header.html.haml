@@ -1,10 +1,38 @@
-%nav
-  %h1= link_to "Yelp Clone", root_path
-  %h4 Browse Categories
-  = form_tag "/", method: "GET", class: "span5 form-inline" do
-    %input.form-control{:type => "text", name: "search_term"}
-    %input.btn.btn-default(type="submit")
-  - if logged_in?
-    #{current_user.email}
-    =link_to "Add new business", new_business_path
-    =link_to "Add new category", new_category_path
+%nav.navbar.navbar-inverse
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+
+      = link_to "Yelp Clone", root_path, class: ("navbar-brand")
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Categories
+            %span.caret
+          %ul.dropdown-menu
+            - all_categories.each do |category|
+              %li
+                %a{:href => category_path(category)}= category.name
+            %li{:role => "separator", :class => "divider"}
+            %li
+              = link_to "New Category", new_category_path
+        %li
+          %a{:href => "#"} Recent Reviews
+      %ul.nav.navbar-nav.navbar-right
+        - if logged_in?
+          %li
+            = link_to current_user.email, user_path(current_user)
+          %li
+            = link_to "Sign out", sign_out_path
+        - else
+          %li
+            = link_to "Sign Up", sign_up_path
+          %li
+            = link_to "Sign In", sign_in_path

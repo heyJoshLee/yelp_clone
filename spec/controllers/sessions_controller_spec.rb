@@ -14,7 +14,7 @@ describe SessionsController do
       it "sets the flash message" do
         session[:user_id] = Fabricate(:user).id
         get :new
-        expect(flash[:error]).not_to be_blank
+        expect(flash[:danger]).not_to be_blank
       end
     end
 

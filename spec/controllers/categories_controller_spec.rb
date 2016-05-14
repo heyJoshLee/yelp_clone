@@ -28,7 +28,7 @@ describe CategoriesController do
       end
       it "sets the flash message error" do
         get :new
-        expect(flash[:error]).not_to be_blank
+        expect(flash[:danger]).not_to be_blank
       end
     end
 
@@ -66,7 +66,8 @@ describe CategoriesController do
         it "sets the flash message" do
           category_params = {name: "1"}
           post :create , category: category_params
-          expect(flash[:error]).not_to be_blank
+          expect(flash[:danger]
+).not_to be_blank
         end
       end
 

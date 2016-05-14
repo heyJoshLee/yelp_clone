@@ -7,5 +7,10 @@ module ApplicationHelper
     end
     options_array
   end
+
+  def all_categories
+    Category.all
+  end
+
 end
 

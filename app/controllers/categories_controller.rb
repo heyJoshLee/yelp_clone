@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
     if @category.save 
       redirect_to @category
     else
-      flash[:error] = "Something went wrong"
+      flash[:danger] = "Something went wrong"
       render :new
     end
   end
