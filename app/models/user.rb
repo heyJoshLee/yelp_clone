@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :reviews
+
   validates :email, presence: true
   validates_uniqueness_of :email, case_sensitive: false
 

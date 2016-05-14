@@ -1,6 +1,7 @@
 .col-sm-6.col-md-4
   .thumbnail
     = link_to image_tag(business.url), business_path(business)
+    %h3 Rating: #{business.rating}
     = link_to business_path(business) do
       %h3= business.name
       %p= business.description
