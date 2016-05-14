@@ -12,7 +12,7 @@
       = bootstrap_form_for [@business, @review], html: {id: "add_review"} do |f|
         %form.form-horizontal
           %header
-            %h1 Add review
+            %h5 Add review
           %fieldset
             = f.text_field :title
             = f.select :rating, options_for_select([[1,1], [2,2,], [3,3,], [4,4,], [5,5,] ])
@@ -20,4 +20,8 @@
           %fieldset.actions.control-group.col-sm-offset-2
             .controls
               =f.submit "Add review", class: "btn btn-primary"
+.row.margin-top
+  = render @business.reviews
+
+
 

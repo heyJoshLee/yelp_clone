@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get "sign_out", to: "sessions#destroy"
 
   resources :users
-  resources :businesses
+  resources :businesses do
+    resources :reviews, only: [:create, :destroy]   
+  end
   resources :categories
   
 end

@@ -7,8 +7,8 @@ class BusinessesController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @business = Business.find(params[:id])
-    
   end
 
    def index

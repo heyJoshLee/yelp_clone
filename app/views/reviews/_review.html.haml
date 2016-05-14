@@ -1,0 +1,7 @@
+.col-sm-6.col-md-4
+  .thumbnail
+    .caption
+      %h3= review.title
+      %p= review.body
+      %small By: 
+      = link_to review.user.email, user_path(review.user)

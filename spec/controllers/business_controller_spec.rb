@@ -15,10 +15,12 @@ describe BusinessesController do
   describe "GET new" do
 
     context "logged in user" do
-      it "set @business" do
+      before do
         alice = Fabricate(:user)
         session[:user_id] = alice.id
         get :new
+      end
+      it "set @business" do
         expect(assigns(:business)).to be_instance_of(Business)
       end
 
@@ -59,10 +61,17 @@ describe BusinessesController do
 
 
   describe "GET show" do
-    it "sets @business" do
+
+    before do
       business = Fabricate(:business, id:1)
       get :show, id: 1
+    end
+    it "sets @business" do
       expect(assigns(:business)).to be_instance_of(Business)
+    end
+
+    it "sets @review" do
+      expect(assigns(:review)).to be_instance_of(Review)
     end
   end
   

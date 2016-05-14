@@ -1,4 +1,4 @@
 Fabricator(:category) do
-  name { Faker::Lorem.words(2).join(" ") }
+  name { Faker::Lorem.characters(10) }
 
 end
