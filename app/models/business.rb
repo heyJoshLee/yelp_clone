@@ -12,4 +12,8 @@ class Business < ActiveRecord::Base
 
   belongs_to :category
 
+  def rating
+    reviews.count > 0 ? reviews.map(&:rating).reduce(:+) / reviews.count : 0
+  end
+
 end
