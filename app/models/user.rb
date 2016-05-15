@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
 
   has_secure_password validations: false
 
+  def has_reviewed?(business)
+    reviews.map(&:business_id).include?(business.id)
+  end
+
 end

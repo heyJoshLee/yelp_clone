@@ -4,7 +4,6 @@ require 'capybara/rails'
 require File.dirname(__FILE__) + "/support/macros"
 
 
-
 RSpec.configure do |config|
 
   # rspec-expectations config goes here. You can use an alternate
