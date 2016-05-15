@@ -15,63 +15,61 @@ describe CategoriesController do
   describe "GET new" do
     context "with logged in users" do
       it "sets @category" do
-        session[:user_id] = Fabricate(:user).id
+        sign_in
         get :new
         expect(assigns(:category)).to be_instance_of(Category)
       end
     end
 
-    context "with not logged in users" do
-      it "redirects to the sign_in page" do
-        get :new
-        expect(response).to redirect_to root_path
-      end
-      it "sets the flash message error" do
-        get :new
-        expect(flash[:danger]).not_to be_blank
-      end
+    it_behaves_like "requires sign in" do
+      let(:action) { get :new}
     end
-
   end
+
   describe "POST create" do
     context "with logged in user" do
 
       context "with valid inputs" do
+
+        let(:category_params) { Fabricate.attributes_for(:category) }
+
+        before do
+          post :create , category: category_params
+        end
         
         it "create a category" do
-          category_params = Fabricate.attributes_for(:category)
-          post :create , category: category_params
           expect(Category.count).to eq(1)
         end
 
         it "redirects to the categories page" do
-          category_params = Fabricate.attributes_for(:category)
-          post :create , category: category_params
           expect(response).to redirect_to category_path(Category.first)
         end
       end
 
       context "with invalid inputs" do
-        it "not create a the category" do
-          category_params = {name: "1"}
+        let(:category_params) { {name: "1"} }
+
+        before do
           post :create , category: category_params
+        end
+
+        it "not create a the category" do
           expect(Category.count).to eq(0)
         end
 
         it "renders the new template" do
-          category_params = {name: "1"}
-          post :create , category: category_params
           expect(response).to render_template :new
         end
         it "sets the flash message" do
-          category_params = {name: "1"}
-          post :create , category: category_params
-          expect(flash[:danger]
-).not_to be_blank
+          expect(flash[:danger]).not_to be_blank
         end
       end
-
     end
+
+    it_behaves_like "requires sign in" do
+      let(:action) { get :new}
+    end
+    
   end
 
   describe "GET show" do

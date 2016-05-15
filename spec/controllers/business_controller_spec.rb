@@ -11,33 +11,21 @@ describe BusinessesController do
     end
   end
 
-
   describe "GET new" do
 
     context "logged in user" do
-      before do
-        alice = Fabricate(:user)
-        session[:user_id] = alice.id
-        get :new
-      end
+
       it "set @business" do
+        alice = Fabricate(:user)
+        sign_in(alice)
+        get :new
         expect(assigns(:business)).to be_instance_of(Business)
       end
 
     end
 
-    context "user not logged in" do
-
-      it "redirects to log in page" do
-        get :new
-        expect(response).to redirect_to root_path
-      end
-
-      it "sets the flash message" do
-        get :new
-        expect(flash[:danger]).not_to be_blank
-      end
-
+    it_behaves_like "requires sign in" do
+      let(:action) { get :new}
     end
 
   end
@@ -45,15 +33,18 @@ describe BusinessesController do
   describe "POST new" do
 
     context "logged in user" do
+      let(:business_params) { Fabricate.attributes_for(:business) }
+      let(:category) { Fabricate(:category) }
+
+      before do
+        post :create, business: business_params
+      end
+      
       it "creates the business" do
-        post :create, business: Fabricate.attributes_for(:business)
         expect(Business.count).to eq(1)
       end
 
       it "redirects to the created business's page" do
-        category = Fabricate(:category)
-        business_params = Fabricate.attributes_for(:business, category_id: category.id)
-        post :create, business: business_params
         expect(response).to redirect_to business_path(Business.first)
       end
     end

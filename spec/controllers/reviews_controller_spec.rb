@@ -9,7 +9,7 @@ describe ReviewsController do
       let(:alice) { Fabricate(:user) }
 
       before do
-        session[:user_id] = alice.id
+        sign_in(alice)
         post :create, business_id: business.id, review: review_params
       end
 
@@ -30,21 +30,8 @@ describe ReviewsController do
       end
     end
 
-    context "not logged in user" do
-      let(:business) { Fabricate(:business) }
-      let(:review_params) { Fabricate.attributes_for(:review) }
-
-      before do
-        post :create, business_id: business.id, review: review_params
-      end
-
-      it "redirect to the home page" do
-        expect(response).to redirect_to root_path
-      end
-
-      it "sets the the flash message" do
-        expect(flash[:danger]).not_to be_blank
-      end
+    it_behaves_like "requires sign in" do
+      let(:action) { post :create, business_id: Fabricate(:business).id, review: Fabricate.attributes_for(:review) }
     end
 
     context "with invalid inputs" do  
@@ -52,7 +39,7 @@ describe ReviewsController do
       let(:business) { Fabricate(:business) }
 
       before do
-        session[:user_id] = alice.id
+        sign_in(alice)
         post :create, business_id: business.id, review: {title: "Just an example"}
       end
 
