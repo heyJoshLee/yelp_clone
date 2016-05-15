@@ -9,6 +9,8 @@
             = f.text_field :name
             = f.url_field :url
             = f.select :category_id, options_for_select(category_dropdown_options)
+            = f.select :state_code, options_for_select(states_and_state_codes_array)
+            = f.text_field :zip_code, maxlength: 5
             = f.text_area :description
           %fieldset.actions.control-group.col-sm-offset-2
             .controls

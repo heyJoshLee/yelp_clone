@@ -7,4 +7,4 @@
       %h3 #{review.title} #{show_business_name ? "" : "| " + review.rating.to_s}
       %p= review.body
       %small By: 
-      = link_to review.user.email, user_path(review.user)
+      = link_to review.user.username, user_path(review.user)

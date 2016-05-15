@@ -7,6 +7,10 @@ class Business < ActiveRecord::Base
 
   validates :url, presence: true
 
+  validates :zip_code, presence: true
+
+  validates :state_code, presence: true, length: {minmum: 2, maximum: 2}
+
 
   validates :description, presence: true, length: {minimum: 10, maximum: 500 }
 

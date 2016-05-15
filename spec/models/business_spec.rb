@@ -6,6 +6,8 @@ describe Business do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:url) }
   it { should validate_presence_of(:description) }
+  it { should validate_presence_of(:zip_code) }
+  it { should validate_presence_of(:state_code) }
   it { should validate_uniqueness_of(:name) }
 
   describe "#rating" do

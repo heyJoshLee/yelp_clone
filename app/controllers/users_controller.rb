@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if @user.save 
       redirect_to root_path
     else
+      flash[:danger] = "There was an error"
       render :new
     end
   end
