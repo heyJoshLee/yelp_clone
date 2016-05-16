@@ -1,7 +1,9 @@
 
 require "rails_helper"
 require 'capybara/rails'
-require File.dirname(__FILE__) + "/support/macros"
+
+
+Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 
 RSpec.configure do |config|
@@ -80,18 +82,7 @@ RSpec.configure do |config|
 =end
 end
 
-def sign_in(user=nil)
-  session[:user_id] = user ? user.id : Fabricate(:user).id
-end
 
-shared_examples_for "requires sign in" do
-
-  it "redirects to the sign in page" do
-    session[:user_id] = nil
-    action
-    expect(response).to redirect_to sign_in_path
-  end
-end
 
 
 

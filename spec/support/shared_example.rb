@@ -1,4 +1,5 @@
-shared_examples_for "sign in" do
+
+shared_examples_for "requires sign in" do
 
   it "redirects to the sign in page" do
     session[:user_id] = nil
