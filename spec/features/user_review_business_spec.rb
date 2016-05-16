@@ -13,18 +13,20 @@ feature "user can review business" do
     expect(page).to have_content business.name
     expect(page).to have_content "Add review"
 
-    fill_in "review_title", with: "A great title"
-    select "1", from: "review_rating"
-    fill_in "review_body", with: "This is a long enough string to be a body"
+    review_params = Fabricate(:review)
+
+    fill_in "review_title", with: review_params.title
+    select review_params.rating, from: "review_rating"
+    fill_in "review_body", with: review_params.body
     click_button "Add review"
 
-    expect(page).to have_content "A great title"
-    expect(page).to have_content "#{business.name} | Rating: 1" 
+    expect(page).to have_content review_params.title
+    expect(page).to have_content "#{business.name} | Rating: #{review_params.rating}" 
 
 
     visit user_path(alice)
     expect(page).to have_content alice.username
-    expect(page).to have_content "A great title"
+    expect(page).to have_content review_params.title
 
 
   end
