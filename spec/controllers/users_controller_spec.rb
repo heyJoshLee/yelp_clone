@@ -38,10 +38,8 @@ describe UsersController do
         post :create, user: {email: "josh@example.com"}
         expect(response).to render_template :new
       end
-
-
-
     end
+  
   end
 
   describe "GET show" do

@@ -1,7 +1,7 @@
 !!! 5
 %html(lang="en-US")
   %head
-    %title Yelp clone
+    %title Yerp
     %meta(charset="UTF-8")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     = csrf_meta_tag
@@ -14,5 +14,5 @@
       %main
         = render 'shared/messages'
         = yield
-    %footer
+    %nav.navbar.navbar-inverse#footer
       &copy 2016 Josh Lee
