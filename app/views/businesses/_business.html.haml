@@ -4,7 +4,10 @@
     %h3 Rating: #{business.rating}
     = link_to business_path(business) do
       %h3= business.name
-      %p= business.description
+    - business.rating.floor.times do
+      %i.glyphicon.glyphicon-star
+
+    %p= business.description
 
     = link_to category_path(business.category) do
       %button.btn.btn-primary{:type => "button"}

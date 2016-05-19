@@ -1,4 +1,6 @@
-%h1 #{@business.name} | Rating: #{@business.rating}
+%h1 #{@business.name} | 
+- @business.rating.floor.times do 
+  %i.glyphicon.glyphicon-star
 %h4 #{@business.state_code}, #{@business.zip_code}
 .row
   .col-sm-6.col-md-4
