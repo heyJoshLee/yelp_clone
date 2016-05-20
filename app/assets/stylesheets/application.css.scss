@@ -16,6 +16,7 @@
  @import "bootstrap-sprockets";
 
  @import "bootstrap";
+ @import "compass";
 
  body {
   background-color: #ecf0f1;
@@ -121,3 +122,29 @@ nav {
 #footer {
   color: white;
 }
+
+#navbar a {
+  color: white;
+}
+
+.dropdown-menu a {
+  color: black !important;
+}
+
+.navbar {
+  background-color: #ff1919; // Old browsers
+  @include filter-gradient(#ff1919, #d63535, horizontal); // IE6-9 fallback on horizontal gradient
+  @include background-image(linear-gradient(left top, #ff1919 0%,#cc262f 50%,#d63535 100%));
+  border: 1px solid white;
+}
+
+.thumbnail {
+  font-size: 1vw;
+}
+
+.recent_reviews {
+  border-left: 1px solid rgba(255, 25, 25, 0.2);
+}
+
+
+

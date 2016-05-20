@@ -1,3 +1,7 @@
-%h1 All businesses
 .row
-  = render @businesses
+  .col-md-8
+    %h1 All businesses
+    = render @businesses
+  .col-md-4.recent_reviews
+    %h2 Recent Reviews
+    = render @reviews, show_business_name: true

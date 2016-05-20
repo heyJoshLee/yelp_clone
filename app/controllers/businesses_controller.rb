@@ -12,6 +12,7 @@ class BusinessesController < ApplicationController
   end
 
    def index
+    @reviews = Review.recent_reviews
     @businesses = Business.all
   end
 

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save 
       redirect_to root_path
     else
-      flash[:danger] = "There was an error"
+      flash.now[:danger] = "There was an error"
       render :new
     end
   end
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit!
+    params.require(:user).permit(:email, :password, :username)
   end
 
 end
