@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  before_filter :require_user, only: [:new]
+  before_filter :require_user, only: [:new, :create]
 
  
   def new

@@ -15,13 +15,16 @@ describe UsersController do
     context "with valid inputs" do
 
       let(:user) { Fabricate.attributes_for(:user) }
-      it "redirects to home_path" do
+
+      before do
         post :create, user: user
+
+      end
+      it "redirects to home_path" do
         expect(response).to redirect_to root_path
       end
 
       it "create new user" do
-        post :create, user: user
         expect(User.count).to eq(1)
       end
 
@@ -29,13 +32,16 @@ describe UsersController do
 
     context "with invalid inputs" do
 
-      it "doesn't create the user" do
+      before do
         post :create, user: {email: "josh@example.com"}
+
+      end
+
+      it "doesn't create the user" do
         expect(User.count).to eq(0)
       end
 
       it "renders the new users template" do
-        post :create, user: {email: "josh@example.com"}
         expect(response).to render_template :new
       end
     end

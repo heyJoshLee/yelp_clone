@@ -5,15 +5,16 @@ describe SessionsController do
   describe "User can log in" do
 
     context "user is already logged in" do
-      it "redirects user to the root_path" do
-        session[:user_id] = Fabricate(:user).id
+      before do
+        sign_in
         get :new
+      end
+
+      it "redirects user to the root_path" do
         expect(response).to redirect_to root_path
       end
 
       it "sets the flash message" do
-        session[:user_id] = Fabricate(:user).id
-        get :new
         expect(flash[:danger]).not_to be_blank
       end
     end
@@ -35,7 +36,6 @@ describe SessionsController do
       end
 
     end
-  
 
     context "with invalid inputs" do
       let(:alice) { Fabricate(:user) }

@@ -19,16 +19,13 @@ feature "user can review business" do
     fill_in "review_body", with: "This is the body for the review"
     click_button "Add review"
 
-    ## Don't think the link is being clicked
     expect(page).to have_content "A neat title"
-    expect(page).to have_content "#{business.name} | Rating: 3" 
+    expect(page).to have_content business.name
 
 
     visit user_path(alice)
     expect(page).to have_content alice.username
     expect(page).to have_content "A neat title"
-
-
   end
 
 

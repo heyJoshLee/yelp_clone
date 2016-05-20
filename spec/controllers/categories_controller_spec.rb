@@ -27,7 +27,6 @@ describe CategoriesController do
   end
 
   describe "POST create" do
-    context "with logged in user" do
 
       context "with valid inputs" do
 
@@ -70,8 +69,6 @@ describe CategoriesController do
       let(:action) { get :new}
     end
     
-  end
-
   describe "GET show" do
     it "sets @category" do
       category = Fabricate(:category)

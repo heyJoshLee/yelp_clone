@@ -32,11 +32,13 @@ describe BusinessesController do
 
   describe "POST new" do
 
-    context "logged in user" do
+    context "logged in user and valid inputs" do
+
       let(:business_params) { Fabricate.attributes_for(:business) }
       let(:category) { Fabricate(:category) }
 
       before do
+        sign_in
         post :create, business: business_params
       end
       
@@ -48,6 +50,11 @@ describe BusinessesController do
         expect(response).to redirect_to business_path(Business.first)
       end
     end
+
+    it_behaves_like "requires sign in" do
+      let(:action) {post :create, business: Fabricate.attributes_for(:business) }
+    end
+
   end
 
 
